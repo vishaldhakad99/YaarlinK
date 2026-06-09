@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <meta name="theme-color" content="#7C3AED" />
+  <meta name="description" content="YaarLink - Next-Gen Social Connection Platform. Dating, Friendship, Networking & Community powered by AI." />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="apple-mobile-web-app-title" content="YaarLink" />
+  <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
+  <title>YaarLink — Find Your Yaar</title>
+  <style>
+    * { box-sizing: border-box; }
+    body { margin: 0; background: #0A0A0F; color: #F8FAFC; }
+    #root { min-height: 100vh; }
+    .splash {
+      position: fixed; inset: 0; background: #0A0A0F;
+      display: flex; flex-direction: column; align-items: center; justify-content: center;
+      z-index: 9999; transition: opacity 0.5s ease;
+    }
+    .splash-logo {
+      font-size: 48px; font-weight: 900; letter-spacing: -2px;
+      background: linear-gradient(135deg, #7C3AED, #EC4899);
+      -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+      margin-bottom: 16px; font-family: system-ui, sans-serif;
+    }
+    .splash-sub { color: #94A3B8; font-size: 16px; font-family: system-ui, sans-serif; }
+    .splash-dot {
+      width: 8px; height: 8px; border-radius: 50%; background: linear-gradient(135deg, #7C3AED, #EC4899);
+      margin-top: 32px; animation: bounce 1s ease infinite;
+    }
+    @keyframes bounce { 0%,100%{transform:scale(1);opacity:1} 50%{transform:scale(1.5);opacity:0.7} }
+  </style>
+</head>  
+<body>
+  <div class="splash" id="splash">
+    <div class="splash-logo">YaarLink</div>
+    <div class="splash-sub">Find Your Yaar ✨</div>
+    <div class="splash-dot"></div>
+  </div>
+  <div id="root"></div>
+  <script>
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        const s = document.getElementById('splash');
+        if (s) { s.style.opacity = '0'; setTimeout(() => s.remove(), 500); }
+      }, 1200);
+    });
+  </script>
+</body>
+</html>
