@@ -8,12 +8,15 @@ const matchSchema = new mongoose.Schema({
     enum: ['pending', 'matched', 'rejected', 'blocked'],
     default: 'pending'
   },
+  
   initiator: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
   matchType: {
     type: String,
     enum: ['vibe', 'mood', 'ai', 'blind', 'event', 'community'],
     default: 'ai'
   },
+
+  
   compatibilityScore: { type: Number, min: 0, max: 100 },
   sharedVibes: [String],
   sharedInterests: [String],
@@ -22,13 +25,25 @@ const matchSchema = new mongoose.Schema({
     challenges: [String],
     conversationStarters: [String]
   },
+
+  
   lastMessage: { type: mongoose.Schema.Types.ObjectId, ref: 'Message' },
   lastActivity: { type: Date, default: Date.now },
   blindMatchRevealed: { type: Boolean, default: false },
   blindMatchRevealedAt: Date
 }, { timestamps: true });
 
+
+
+
+
 matchSchema.index({ users: 1 });
+
+
+
+
+
+
 
 // Message Model
 const messageSchema = new mongoose.Schema({
@@ -41,6 +56,13 @@ const messageSchema = new mongoose.Schema({
     enum: ['text', 'image', 'voice', 'video', 'gif', 'location', 'date-plan'],
     default: 'text'
   },
+
+
+
+
+
+
+  
   mediaUrl: String,
   seen: { type: Boolean, default: false },
   seenAt: Date,
@@ -48,6 +70,11 @@ const messageSchema = new mongoose.Schema({
     user: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
     emoji: String
   }],
+
+
+
+
+  
   aiRedFlag: { type: Boolean, default: false },
   aiRedFlagReason: String,
   deleted: { type: Boolean, default: false }
@@ -65,6 +92,11 @@ const communitySchema = new mongoose.Schema({
     enum: ['coders', 'gamers', 'fitness', 'entrepreneurs', 'travelers', 'music', 'movies', 'study', 'other'],
     required: true
   },
+
+
+
+
+  
   avatar: String,
   banner: String,
   creator: { type: mongoose.Schema.Types.ObjectId, ref: 'User', required: true },
@@ -147,6 +179,9 @@ const reportSchema = new mongoose.Schema({
   status: { type: String, enum: ['pending', 'reviewed', 'resolved', 'dismissed'], default: 'pending' },
   adminNote: String
 }, { timestamps: true });
+
+
+
 
 // Swipe/Like Model
 const swipeSchema = new mongoose.Schema({
